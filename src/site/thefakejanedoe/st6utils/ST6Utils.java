@@ -21,8 +21,6 @@ public class ST6Utils extends JavaPlugin{
 	
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new HammerClass(this), this);
-        System.out.println("Economy Setup: " + (econ != null));
-        System.out.println("Economy name: " + econ.currencyNameSingular());
         SetupMaterialLists();
 	}
 	

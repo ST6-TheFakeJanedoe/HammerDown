@@ -45,6 +45,12 @@ public class HammerClass implements Listener{
 				case "III":
 					enchLvl = 3;
 					break;
+				case "IV":
+					enchLvl = 4;
+					break;
+				case "V":
+					enchLvl = 5;
+					break;
 				default:
 					break;
 				}
@@ -82,97 +88,95 @@ public class HammerClass implements Listener{
 
 	public List<Location> figureOutBlocks(Location origin, int level, Player player, BlockFace face){
 		List<Location> blocks = new ArrayList<Location>();
-		blocks.add(origin.getBlock().getLocation().add(0, -1, 0));
-		if(level > 1) {
-			blocks.add(origin.getBlock().getLocation().add(0, 1, 0));
-			switch(face) {
-			case EAST: case WEST:
-				blocks.add(origin.getBlock().getLocation().add(0, 0, 1));
-				blocks.add(origin.getBlock().getLocation().add(0, 0, -1));
-				blocks.add(origin.getBlock().getLocation().add(0, 1, 1));
-				blocks.add(origin.getBlock().getLocation().add(0, 1, -1));
-				blocks.add(origin.getBlock().getLocation().add(0, -1, 1));
-				blocks.add(origin.getBlock().getLocation().add(0, -1, -1));
-				if(level > 2) {
-					blocks.add(origin.getBlock().getLocation().add(0, 0, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, 1, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, 1, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, -1, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, -1, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, -1));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, 1));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, -1));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, 0));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, 1));
-				}
-				break;
-			case NORTH: case SOUTH:
-				blocks.add(origin.getBlock().getLocation().add(1, 0, 0));
-				blocks.add(origin.getBlock().getLocation().add(-1, 0, 0));
-				blocks.add(origin.getBlock().getLocation().add(1, 1, 0));
-				blocks.add(origin.getBlock().getLocation().add(-1, 1, 0));
-				blocks.add(origin.getBlock().getLocation().add(1, -1, 0));
-				blocks.add(origin.getBlock().getLocation().add(-1, -1, 0));
-				if(level > 2) {
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, 0, 0));
-					blocks.add(origin.getBlock().getLocation().add(-2, 1, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, 1, 0));
-					blocks.add(origin.getBlock().getLocation().add(-2, 2, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, 2, 0));
-					blocks.add(origin.getBlock().getLocation().add(-2, -1, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, -1, 0));
-					blocks.add(origin.getBlock().getLocation().add(-2, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(-1, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(0, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(1, -2, 0));
-					blocks.add(origin.getBlock().getLocation().add(-1, 2, 0));
-					blocks.add(origin.getBlock().getLocation().add(0, 2, 0));
-					blocks.add(origin.getBlock().getLocation().add(1, 2, 0));
-				}
-				break;
-			case UP: case DOWN:
-				blocks.remove(0);
-				blocks.remove(0);
-				blocks.add(origin.getBlock().getLocation().add(0, 0, 1));
-				blocks.add(origin.getBlock().getLocation().add(0, 0, -1));
-				blocks.add(origin.getBlock().getLocation().add(1, 0, 0));
-				blocks.add(origin.getBlock().getLocation().add(-1, 0, 0));
-				blocks.add(origin.getBlock().getLocation().add(1, 0, 1));
-				blocks.add(origin.getBlock().getLocation().add(-1, 0, 1));
-				blocks.add(origin.getBlock().getLocation().add(1, 0, -1));
-				blocks.add(origin.getBlock().getLocation().add(-1, 0, -1));
-				if(level > 2) {
-					blocks.add(origin.getBlock().getLocation().add(2, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(2, 0, 1));
-					blocks.add(origin.getBlock().getLocation().add(2, 0, 0));
-					blocks.add(origin.getBlock().getLocation().add(2, 0, -1));
-					blocks.add(origin.getBlock().getLocation().add(2, 0, -2));
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, 1));
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, 0));
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, -1));
-					blocks.add(origin.getBlock().getLocation().add(-2, 0, -2));
-					blocks.add(origin.getBlock().getLocation().add(-1, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(0, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(1, 0, 2));
-					blocks.add(origin.getBlock().getLocation().add(-1, 0, -2));
-					blocks.add(origin.getBlock().getLocation().add(0, 0, -2));
-					blocks.add(origin.getBlock().getLocation().add(1, 0, -2));
-				}
-				break;
-			default:
-				break;
-			}
+		if((level == 1) && (!(face == BlockFace.UP) || (!(face == BlockFace.DOWN)))){
+			blocks.add(origin.add(0, -1, 0));
 		}
-		return blocks;
+		System.out.println(face);
+		switch(face) {
+		case UP: case DOWN:
+			if((level == 2) || (level == 3)){
+				for(int x = origin.getBlockX()-(level-1); x <= (origin.getBlockX()+(level-1)); x++) {
+					for(int z = origin.getBlockZ()-(level-1); z <= (origin.getBlockZ()+(level-1)); z++) {
+						blocks.add(new Location(origin.getWorld(), x, origin.getBlockY(), z));
+					}
+				}
+			}
+			if(level > 3) {
+				for(int x = origin.getBlockX()-(level-1); x <= (origin.getBlockX()+(level-1)); x++) {
+					for(int z = origin.getBlockZ()-(level-1); z <= (origin.getBlockZ()+(level-1)); z++) {
+						blocks.add(new Location(origin.getWorld(), x, origin.getBlockY(), z));
+					}
+				}
+			}
+			break;
+		case NORTH: case SOUTH:
+			if((level == 2) || (level == 3)) {
+				for(int x = origin.getBlockX()-(level-1); x <= (origin.getBlockX()+(level-1)); x++) {
+					for(int y = origin.getBlockY()-(level-1); y <= (origin.getBlockY()+(level-1)); y++) {
+						blocks.add(new Location(origin.getWorld(), x, y, origin.getZ()));
+					}
+				}
+			}
+			if((level == 4) || (level == 5)){
+				int radius = 0;
+				if(level == 4) radius = 1;
+				if(level == 5) radius = 2;
+				for(int x = origin.getBlockX()-radius; x <= (origin.getBlockX()+radius); x++) {
+					for(int y = origin.getBlockY()-radius; y <= (origin.getBlockY()+radius); y++) {
+						if(face == BlockFace.NORTH) {
+							for(int z = origin.getBlockZ(); z < origin.getBlockZ()+3; z++) {
+								blocks.add(new Location(origin.getWorld(), x, y, z));
+							}
+						} else if(face == BlockFace.SOUTH){
+							for(int z = origin.getBlockZ(); z > origin.getBlockZ()-3; z--) {
+								blocks.add(new Location(origin.getWorld(), x, y, z));
+							}
+						}
+					}
+				}
+			}
+			break;
+		case EAST: case WEST:
+			if((level == 2) || (level == 3)) {
+				for(int z = origin.getBlockZ()-(level-1); z <= (origin.getBlockZ()+(level-1)); z++) {
+					for(int y = origin.getBlockY()-(level-1); y <= (origin.getBlockY()+(level-1)); y++) {
+						blocks.add(new Location(origin.getWorld(), origin.getX(), y, z));
+					}
+				}
+			}
+			if((level == 4) || (level == 5)){
+				int radius = 0;
+				if(level == 4) radius = 1;
+				if(level == 5) radius = 2;
+				for(int z = origin.getBlockZ()-radius; z <= (origin.getBlockZ()+radius); z++) {
+					for(int y = origin.getBlockY()-radius; y <= (origin.getBlockY()+radius); y++) {
+						if(face == BlockFace.WEST) {
+							for(int x = origin.getBlockX(); x < origin.getBlockX()+3; x++) {
+								blocks.add(new Location(origin.getWorld(), x, y, z));
+							}
+						} else if(face == BlockFace.EAST){
+							for(int x = origin.getBlockX(); x > origin.getBlockX()-3; x--) {
+								blocks.add(new Location(origin.getWorld(), x, y, z));
+							}
+						}
+					}
+				}
+			}
+			
+			break;
+		default:
+			break;
+		}
+		List<Location> correctedBlocks = new ArrayList<Location>();
+		if((face == BlockFace.EAST || face == BlockFace.WEST || face == BlockFace.NORTH || face == BlockFace.SOUTH) && ((level == 3) || (level == 5))) {
+			for(Location locat : blocks) {
+				correctedBlocks.add(locat.add(0, 1, 0));
+			}
+			return correctedBlocks;
+		} else {
+			return blocks;
+
+		}
 	}
 	
 	
